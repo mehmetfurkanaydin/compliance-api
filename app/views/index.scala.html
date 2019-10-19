@@ -1,5 +1,27 @@
 @()
 
 @main("Welcome to Play") {
-  <h1>Welcome to Play!</h1>
+  <h1>Scala Back-end Technical Assessment</h1>
+  <p>
+    Requirements<br/>
+    1. Create an http service that receives a GET request under the path ​ /compliance/{type}<br/>
+    where ​ {type}​ is optional, but if it is present, it can be either ​ gdpr​, ​ unprotected-devices or ​ uninspectable-data. <br/>
+    2. If the request if correct, the response must have the http code 200, and contain a JSON payload similar to this:<br/>
+    {<br/>
+      "compliance": {<br/>
+      "gdpr": 0.87,<br/>
+      "unprotected-devices": 0.71,<br/>
+      "uninspectable-data": 0.33<br/>
+      }<br/>
+    }<br/>
+    If a value has been provided in parameter ​ {type}​, only the corresponding element within the <br/>
+    "compliance"​ response must appear. Otherwise, all elements must appear. The returned <br/>
+    JSON doesn't have to be formatted as shown here. <br/>
+    3. If the request asks for a different value of parameter ​ {type}, the response must have http <br/>
+    code 404, and a nice error message must be returned. <br/>
+    4. If any other parameter is passed (including url parameters), the response must have http code <br/>
+    400, and a nice error message must be returned. <br/>
+    5. The values to be included in the response are random numbers between 0 and 1, with uniform <br/>
+    distribution.
+  </p>
 }

@@ -41,5 +41,14 @@ class HomeControllerSpec extends PlaySpec with GuiceOneAppPerTest with Injecting
       contentType(home) mustBe Some("text/html")
       contentAsString(home) must include ("Welcome to Play")
     }
+
+    "should return custom error for unknown route" in {
+      val request = FakeRequest(GET, "/wrong")
+      val home = route(app, request).get
+
+      status(home) mustBe BAD_REQUEST
+      contentType(home) mustBe Some("text/plain")
+      contentAsString(home) must include ("Unknown route")
+    }
   }
 }
